@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: "Build Application according to some given configuration"
-          command: dotnet.exe build --configuration Release
+          command: dotnet.exe build --configuration Release && tree /F
 workflows:
   build-only:
     jobs:
