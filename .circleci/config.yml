@@ -11,8 +11,14 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Print Working Directory"
+          command: pwd
+      - run:
           name: "Build Application according to some given configuration"
-          command: dotnet.exe build --configuration Release && tree /F
+          command: dotnet.exe build --configuration Release
+      - run:
+          name: "show tree"
+          command: tree /F
 workflows:
   build-only:
     jobs:
