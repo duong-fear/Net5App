@@ -18,7 +18,7 @@ jobs:
           command: dotnet.exe build --configuration Release
       - run:
           name: "show tree"
-          command: tree /F /A
+          command: tar /? && ver
       - store_artifacts:
           path: .\bin\Release\net5.0
 workflows:
