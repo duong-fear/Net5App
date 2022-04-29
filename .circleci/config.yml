@@ -4,25 +4,22 @@ orbs:
   windows: circleci/windows@2.2.0
 
 jobs:
-  build:
+  build-win:
     description: Build application with Release configuration
     executor:
       name: windows/default
     steps:
       - checkout
       - run:
-          name: "Print Working Directory"
-          command: pwd
-      - run:
-          name: "Build Application according to some given configuration"
+          name: "Build w/ Release configuration"
           command: dotnet.exe build --configuration Release
       - run:
-          name: "show tree"
-          command: tar /?
+          name: "Compress build result"
+          command: tar cf .\bin\Release\Release.tar .\bin\Release\net5.0
       - store_artifacts:
-          path: .\bin\Release\net5.0
+          path: .\bin\Release\Release.tar
 workflows:
-  build-only:
+  build-windows:
     jobs:
-      - build
+      - build-win
       
